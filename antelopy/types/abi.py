@@ -43,12 +43,12 @@ class AbiStructField(AbiBaseClass):
 
     def __init__(self, **data: Any):
         super().__init__(**data)
-        if self.type.endswith("[]"):
-            self.is_list = True
-            self.type = self.type[:-2]
         if self.type.endswith("$"):
             self.optional = True
             self.type = self.type[:-1]   # strip the "$"
+        if self.type.endswith("[]"):
+            self.is_list = True
+            self.type = self.type[:-2]   # strip the "[]"
 
 
 class AbiStruct(AbiBaseClass):
