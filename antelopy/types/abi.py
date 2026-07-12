@@ -48,6 +48,7 @@ class AbiStructField(AbiBaseClass):
             self.type = self.type[:-2]
         if self.type.endswith("$"):
             self.optional = True
+            self.type = self.type[:-1]   # strip the "$"
 
 
 class AbiStruct(AbiBaseClass):
